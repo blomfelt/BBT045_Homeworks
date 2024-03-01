@@ -4,7 +4,7 @@
 #SBATCH -n 3
 #SBATCH -t 03:00:00
 #SBATCH -J iqtree
-#SBATCH --mail-user=<WRITE YOUR CHALMERS EMAIL HERE>
+#SBATCH --mail-user=blfelix@student.chalmers.se
 #SBATCH --mail-type=ALL
 # Set the names for the error and output files
 #SBATCH --error=job.%J.err
@@ -31,14 +31,14 @@
 # key directory
 # CORRECT THIS FILE PATH AS YOU NEED
 # MAKE SURE THAT YOUR CLEANED MSA IS IN THIS DIRECTORY
-WORKDIR=/cephyr/users/<CID>/Vera/<WORKING DIRECTORY>;
+WORKDIR=/cephyr/users/blfelix/Vera/BBT045/BBT045_Homeworks/Phylo_Homework;
 
 # files used
 # location of the container
 CONTAINER_LOC=/cephyr/NOBACKUP/groups/bbt045_2024/Phylogeny/phylo-tutorial-env.sif;
 # input MSA file
 # MAKE SURE YOU WRITE YOUR FILE NAME HERE
-MSA_FILE=$WORKDIR/<WRITE YOUR CLEANED MSA FILE NAME HERE>;
+MSA_FILE=$WORKDIR/data/XP_001351627_MSA.fasta;
 
 # temp files directory variable
 WORKING_TMP=$TMPDIR/IQ-TREE_TMP;
@@ -58,7 +58,7 @@ cp $MSA_FILE $WORKING_TMP
 
 
 ### Running IQ-TREE
-apptainer exec $CONTAINER_LOC iqtree -s $MSA_FILE --prefix <WRITE YOUR FILE BASE NAME HERE> \
+apptainer exec $CONTAINER_LOC iqtree -s $MSA_FILE --prefix XP_001351627_MSA_IQ \
 -m MFP -seed 12345 -wbtl -T AUTO -ntmax 3;
 
 
