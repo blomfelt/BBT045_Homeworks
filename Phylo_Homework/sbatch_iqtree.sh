@@ -38,7 +38,7 @@ WORKDIR=/cephyr/users/blfelix/Vera/BBT045/BBT045_Homeworks/Phylo_Homework;
 CONTAINER_LOC=/cephyr/NOBACKUP/groups/bbt045_2024/Phylogeny/phylo-tutorial-env.sif;
 # input MSA file
 # MAKE SURE YOU WRITE YOUR FILE NAME HERE
-MSA_FILE=$WORKDIR/data/XP_001351627_MSA.fasta;
+MSA_FILE=$WORKDIR/data/XP_001351627_MSA_trim1.fasta;
 
 # temp files directory variable
 WORKING_TMP=$TMPDIR/IQ-TREE_TMP;
@@ -58,7 +58,7 @@ cp $MSA_FILE $WORKING_TMP
 
 
 ### Running IQ-TREE
-apptainer exec $CONTAINER_LOC iqtree -s $MSA_FILE --prefix XP_001351627_MSA_IQ \
+apptainer exec $CONTAINER_LOC iqtree -s $MSA_FILE --prefix XP_001351627_MSA_trim1_IQ \
 -m MFP -seed 12345 -wbtl -T AUTO -ntmax 3;
 
 
